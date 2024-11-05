@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: center;
     padding: 2vw;
-  }
+}
   
-  .timetable-title {
+.timetable-title {
     font-size: 2vw;
     color: #ffffff;
     background-color: #1e6bb8;
@@ -15,38 +15,38 @@
     text-align: center;
     width: 80vw;
     max-width: 100vw;
-  }
+}
   
-  .timetable-options {
+.timetable-options {
     display: flex;
     gap: 2vw;
     justify-content: center;
     width: 100vw;
-  }
+}
   
-  .timetable-option {
+.timetable-option {
     width: 25vw;
     height: 60vh;
     border: 1px solid #ccc;
     border-radius: 0.5vw;
     position: relative;
     background-color: #f8f8f8;
-    transition: transform 0.3s ease;
-  }
-  
-  .timetable-option:hover {
+    transition: transform 0.3s ease; /* 카드 호버 효과 */
+}
+
+.timetable-option:hover {
     transform: scale(1.05);
-  }
+}
   
-  /* 구분선 스타일 */
-  .timetable-divider {
+/* 구분선 스타일 */
+.timetable-divider {
     width: 1px;
     background-color: #3f3f3f;
     height: 60vh;
     margin: 0 1vw;
-  }
+}
   
-  .timetable-label {
+.timetable-label {
     background-color: #1e6bb8;
     color: #ffffff;
     padding: 0.5vw 3.5vw;
@@ -59,13 +59,12 @@
     transform: translateX(-50%);
     font-size: 1vw;
     transition: background-color 0.3s ease;
-  }
-  
-  .timetable-label:hover {
+}
+
+.timetable-label:hover {
     background-color: #154c8a; 
-  }
+}
   
-  .timetable-content {
+.timetable-content {
     padding: 1vw;
-  }
-  
+}
