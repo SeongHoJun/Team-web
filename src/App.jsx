@@ -14,9 +14,9 @@ function App() {
         <Routes>
           <Route path="/faq" element={<FAQWEB />} />
           <Route path="/mypage" element={<MyPage />} />
-          <Route path="/loading" element={<Loading />} /> {/* /loading 경로 추가 */}
-          <Route path="/timetablelist" element={<TimetableList />} /> {/* TimetableList 경로 추가 */}
-          <Route path="/timetableview" element={<TimetableView />} /> {/* TimetableView 경로 추가 */}
+          <Route path="/loading" element={<Loading />} />
+          <Route path="/timetablelist" element={<TimetableList />} />
+          <Route path="/timetableview" element={<TimetableView />} />
           <Route path="/" element={<FAQWEB />} />
         </Routes>
       </div>
