@@ -1,11 +1,12 @@
-.timetable-container {
+/* 기본 스타일 */
+.timetablelist-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2vw;
 }
-  
-.timetable-title {
+
+.timetablelist-title {
     font-size: 2vw;
     color: #ffffff;
     background-color: #1e6bb8;
@@ -16,37 +17,39 @@
     width: 80vw;
     max-width: 100vw;
 }
-  
-.timetable-options {
+
+.timetablelist-options {
     display: flex;
-    gap: 2vw;
+    gap: 1vw; /* 카드 간격을 조정 */
     justify-content: center;
     width: 100vw;
 }
-  
-.timetable-option {
-    width: 25vw;
-    height: 60vh;
+
+.timetablelist-option {
+    width: 28vw; /* 폭을 약간 증가 */
+    height: 65vh; /* 높이를 약간 증가 */
     border: 1px solid #ccc;
     border-radius: 0.5vw;
     position: relative;
     background-color: #f8f8f8;
-    transition: transform 0.3s ease; /* 카드 호버 효과 */
+    transition: transform 0.3s ease;
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+    padding: 5px; /* 안쪽 여백 추가 */
 }
 
-.timetable-option:hover {
+.timetablelist-option:hover {
     transform: scale(1.05);
 }
-  
+
 /* 구분선 스타일 */
-.timetable-divider {
+.timetablelist-divider {
     width: 1px;
     background-color: #3f3f3f;
-    height: 60vh;
+    height: 65vh; /* 구분선 높이를 시간표 카드와 맞춤 */
     margin: 0 1vw;
 }
-  
-.timetable-label {
+
+.timetablelist-label {
     background-color: #1e6bb8;
     color: #ffffff;
     padding: 0.5vw 3.5vw;
@@ -61,10 +64,63 @@
     transition: background-color 0.3s ease;
 }
 
-.timetable-label:hover {
-    background-color: #154c8a; 
+.timetablelist-label:hover {
+    background-color: #154c8a;
 }
-  
-.timetable-content {
-    padding: 1vw;
+
+/* 시간표 그리드 스타일 */
+.timetablelist-grid {
+    display: grid;
+    grid-template-columns: 1fr repeat(6, 1fr); /* 첫 열은 시간대, 나머지 6열은 요일 */
+    grid-auto-rows: 1fr;
+    gap: 1px;
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.timetablelist-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.timetablelist-time-slot {
+    background-color: #ffffff;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.timetablelist-class-cell {
+    background-color: #445Eb4;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.timetablelist-class-cell span {
+    display: block;
+    margin: 2px 0;
+    font-size: 0.8rem;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+    .timetablelist-options {
+        flex-direction: column;
+    }
+    .timetablelist-option {
+        width: 80vw;
+        height: auto;
+    }
+    .timetablelist-grid {
+        grid-template-columns: 1fr repeat(3, 1fr); /* 작은 화면에서 4열 */
+    }
 }
