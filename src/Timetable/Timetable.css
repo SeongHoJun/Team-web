@@ -1,0 +1,66 @@
+/* src/Timetable/timetable.css */
+.timetable {
+    display: grid;
+    grid-template-columns: 100px repeat(5, 150px);
+    grid-template-rows: 50px repeat(12, 100px); 
+    gap: 0.8px;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timetable-header {
+    display: contents;
+    text-align: center;
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+.timetable-day {
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 16px;
+}
+
+.timetable-time {
+    text-align: right;
+    padding-right: 9px;
+    font-size: 15px;
+    color: #666;
+    background-color: #f7f7f7;
+    border-right: 3px solid #f0f0f0;
+    border-bottom: 3px solid #f0f0f0;
+}
+
+.timetable-cell {
+    border: 2px solid #ddd;
+    background-color: white;
+    position: relative;
+    height: 100px; 
+}
+
+.lecture-block {
+    position: absolute;
+    width: 140px;
+    color: white;
+    padding: 3px;
+    font-size: 14px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* 호버 효과 */
+.lecture-block:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+}
+
+/* 클릭 (눌림) 효과 */
+.lecture-block:active {
+    transform: scale(0.99);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 

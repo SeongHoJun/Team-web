@@ -95,6 +95,8 @@ body {
   border: none;
   border-radius: 2vh;
   font-size: calc(0.5em + 0.4vw);
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .faq-search-bar button {
@@ -121,6 +123,7 @@ body {
   font-weight: bold;
   min-height: 15vh;
   font-size: calc(0.7em + 0.2vw);
+  color: #000000;
 }
 
 /* 닉네임 바 스타일 */
