@@ -1,21 +1,11 @@
-// src/Timetable/TimetableGrid.jsx
 import React from 'react';
 import './timetable.css';
 
-const TimetableGrid = () => {
+const TimetableGrid = ({ lectureData }) => {
     const hours = Array.from({ length: 12 }, (_, i) => 9 + i); // 9시부터 20시까지
     const days = ['월', '화', '수', '목', '금'];
 
-    // 더미데이터 넣는곳
-    const lectureData = [
-        { day: 1, class_time: "01A", duration: 2, color: '#81C784', title: '컴퓨터네트워크', instructor: '주홍택' },
-        { day: 3, class_time: "03A", duration: 5, color: '#64B5F6', title: '데이터베이스프로그래밍', instructor: '홍동권' },
-        { day: 5, class_time: "07A", duration: 1.9, color: '#FFAB91', title: '프로그래밍기초', instructor: '사공상욱'},
-        { day: 2, class_time: "04A", duration: 4, color: '#FFCC80', title: '컴퓨터공학캡스톤디자인(1)', instructor: '홍동권' },
-        { day: 1, class_time: "05A", duration: 1.25, color: '#FF8A65', title: '데이터베이스', instructor: '홍동권' },
-    ];
-
-    // class_time 코드를 시간과 분으로 변환
+    // class_time 코드를 시간과 분으로 변환하는 함수
     const getTimeFromClassTime = (classTime) => {
         const timeMap = {
             "01A": { hour: 9, minutes: 0 },
@@ -42,6 +32,7 @@ const TimetableGrid = () => {
 
     return (
         <div className="timetable">
+            {/* 시간표 헤더 */}
             <div className="timetable-header">
                 <div className="timetable-time"></div>
                 {days.map((day, index) => (
@@ -49,6 +40,7 @@ const TimetableGrid = () => {
                 ))}
             </div>
 
+            {/* 시간표 그리드 */}
             {hours.map((hour) => (
                 <React.Fragment key={hour}>
                     <div className="timetable-time">{`${hour}:00`}</div>
@@ -70,10 +62,12 @@ const TimetableGrid = () => {
                         key={index}
                         className="lecture-block"
                         style={{
+                            position: 'absolute', // 절대 위치
                             backgroundColor: lecture.color,
                             top: `${top}px`,
                             left: `${left}px`,
                             height: `${height}px`,
+                            width: '140px', // 고정된 블록 너비
                         }}
                     >
                         <span>{lecture.title}</span>

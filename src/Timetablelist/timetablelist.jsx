@@ -1,6 +1,6 @@
 import React from 'react';
-import './timetablelist.css'; // CSS 스타일
-import Layout from "../Layout/Layout"; // 레이아웃
+import './timetablelist.css';
+import Layout from "../Layout/Layout";
 import { useNavigate } from 'react-router-dom';
 
 const TimetableList = () => {
@@ -8,16 +8,18 @@ const TimetableList = () => {
   const timeSlots = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
   
   const timetableData1 = [
-    { day: '화', time: 9, endTime: 10.15, title: "프로그래밍언어론", room: "공3017" },
-    { day: '화', time: 11.4, endTime: 16.2, title: "컴퓨터공학캡스톤디자인(1)", room: "공1320"},
+    { day: '화', time: 9, title: "프로그래밍언어론", room: "공3017" },
+    // ...더미 데이터
   ];
 
   const timetableData2 = [
-    { day: '월', time: 9, endTime: 10.15, title: "데이터베이스", room: "공2010" },
+    { day: '월', time: 9, title: "데이터베이스", room: "공2010" },
+    // ...더미 데이터
   ];
 
   const timetableData3 = [
-    { day: '금', time: 10.25, endTime: 11.5, title: "컴퓨터네트워크", room: "공1402" },
+    { day: '금', time: 9, title: "컴퓨터네트워크", room: "공1402" },
+    // ...더미 데이터
   ];
 
   const navigate = useNavigate();
@@ -43,52 +45,31 @@ const TimetableList = () => {
                   {label}
                 </button>
                 <div className="timetablelist-option">
-                  <div className="timetablelist-grid">
-                    <div className="timetablelist-header"></div>
-                    {days.map((day, index) => (
-                      <div key={index} className="timetablelist-header">{day}</div>
-                    ))}
-                    {timeSlots.map((time) => (
-                      <React.Fragment key={`time-${time}`}>
-                        <div className="timetablelist-time-slot">{time}</div>
-                        {days.map((day) => (
-                          <div key={`${day}-${time}`} className="timetablelist-time-slot"></div>
-                        ))}
-                      </React.Fragment>
-                    ))}
-                    {timetableData[idx].map((classItem) => {
-                      const { day, time, endTime, title, room } = classItem;
-                      const dayIndex = days.indexOf(day);
-
-                      const startHour = Math.floor(time);
-                      const startMinute = Math.round((time % 1) * 60); // 소수점 부분을 60분 단위로 변환
-                      const endHour = Math.floor(endTime);
-                      const endMinute = Math.round((endTime % 1) * 60); // 소수점 부분을 60분 단위로 변환
-
-                      const timeSlotHeightPercentage = 100 / timeSlots.length;
-
-                      // 셀의 위치 및 길이 계산
-                      const top = ((startHour - timeSlots[0]) + (startMinute / 60)) * timeSlotHeightPercentage + "%";
-                      const height = ((endHour - startHour) + (endMinute - startMinute) / 60) * timeSlotHeightPercentage + "%";
-
-                      const left = `${(dayIndex + 1) * (100 / 7)}%`;
-
-                      return (
-                        <div
-                          key={`${day}-${time}`}
-                          className="timetablelist-class-cell"
-                          style={{
-                            top,
-                            left,
-                            height,
-                            width: `calc(100% / 7 - 2px)`,
-                          }}
-                        >
-                          <span>{title}</span>
-                          <span>{room}</span>
-                        </div>
-                      );
-                    })}
+                  <div className="timetablelist-content">
+                    <div className="timetablelist-grid">
+                      <div className="timetablelist-header"></div>
+                      {days.map((day, index) => (
+                        <div key={index} className="timetablelist-header">{day}</div>
+                      ))}
+                      {timeSlots.map((time) => (
+                        <React.Fragment key={`time-${time}`}>
+                          <div className="timetablelist-time-slot">{time}</div>
+                          {days.map((day) => {
+                            const classData = timetableData[idx].find(
+                              (classItem) => classItem.day === day && classItem.time === time
+                            );
+                            return classData ? (
+                              <div key={`${day}-${time}`} className="timetablelist-class-cell">
+                                <span>{classData.title}</span>
+                                <span>{classData.room}</span>
+                              </div>
+                            ) : (
+                              <div key={`${day}-${time}`} className="timetablelist-time-slot"></div>
+                            );
+                          })}
+                        </React.Fragment>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
