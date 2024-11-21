@@ -131,6 +131,7 @@
     display: block;
     margin: 0.2vw 0;
     font-size: 0.8rem;
+<<<<<<< Updated upstream
 }
 
 /* 반응형 조정 */
@@ -146,3 +147,6 @@
         grid-template-columns: 1fr repeat(3, 1fr);
     }
 }
+=======
+}
+>>>>>>> Stashed changes
