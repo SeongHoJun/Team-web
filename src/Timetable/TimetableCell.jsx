@@ -6,7 +6,7 @@ const TimetableCell = ({ lecture }) => {
     const cellStyle = lecture
         ? {
               backgroundColor: lecture.color,
-              gridRow: `span ${lecture.duration}`, // duration에 따라 행(span) 설정
+              gridRow: span ${lecture.duration}, // duration에 따라 행(span) 설정
               height: '100%', // 강의 블록이 셀 전체 높이를 차지
           }
         : {};

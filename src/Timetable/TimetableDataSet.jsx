@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import TimetableGrid from './TimetableGrid';
 import './timetable.css';
 
 const TimetableDataSet = () => {
-    // 더미데이터 (startTime, endTime 추가)
+    const navigate = useNavigate();
+
+    // 더미 데이터
     const timetableData = [
         [
             { day: 1, startTime: "09:00", endTime: "10:30", color: '#81C784', title: '컴퓨터네트워크', instructor: '주홍택' },
@@ -18,12 +21,15 @@ const TimetableDataSet = () => {
         ],
     ];
 
+    const handleSelect = (index) => {
+        navigate('/timetablecheck', { state: { selectedTimetable: timetableData[index] } });
+    };
+
     return (
         <div className="tables-wrapper">
             {timetableData.map((data, index) => (
                 <div className="timetable-container" key={index}>
-                    <button>시간표 {index + 1} 선택하기</button>
-                    {/* 데이터 전달 */}
+                    <button onClick={() => handleSelect(index)}>시간표 {index + 1} 선택하기</button>
                     <TimetableGrid lectureData={data} />
                 </div>
             ))}
