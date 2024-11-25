@@ -3,12 +3,22 @@ import './timetable.css';
 
 const TimetableGrid = ({ lectureData }) => {
     const hours = Array.from({ length: 12 }, (_, i) => 9 + i); // 9시부터 20시까지
-    const days = ['월', '화', '수', '목', '금'];
+    const days = ['월', '화', '수', '목', '금']; // 요일 배열
 
     // 시간 문자열을 분 단위로 변환하는 함수
     const timeToMinutes = (time) => {
         const [hour, minute] = time.split(':').map(Number);
         return hour * 60 + minute;
+    };
+
+    // 랜덤 색상 생성 함수
+    const getRandomColor = () => {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
     };
 
     return (
@@ -37,8 +47,8 @@ const TimetableGrid = ({ lectureData }) => {
                 const endMinutes = timeToMinutes(lecture.endTime);
                 const durationMinutes = endMinutes - startMinutes;
 
-                const top = ((startMinutes - 540) / 60) * 100 + 50; // 540 = 9:00 AM (위치에 맞게 하기 위해 +50 추가)
-                const left = (lecture.day - 1) * 150 + 100; // 요일에 따른 x 위치
+                const top = ((startMinutes - 540) / 60) * 100 + 50; // 540 = 9:00 AM 기준
+                const left = days.indexOf(lecture.day) * 150 + 100; // 요일 배열의 인덱스를 활용
                 const height = (durationMinutes / 60) * 100; // 분 단위를 px로 변환
 
                 return (
@@ -47,7 +57,7 @@ const TimetableGrid = ({ lectureData }) => {
                         className="lecture-block"
                         style={{
                             position: 'absolute',
-                            backgroundColor: lecture.color,
+                            backgroundColor: getRandomColor(), // 랜덤 색상 적용
                             top: `${top}px`,
                             left: `${left}px`,
                             height: `${height}px`,

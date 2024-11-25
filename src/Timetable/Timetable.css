@@ -89,25 +89,109 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* 시간표 선택 버튼 */
 .timetable-container button {
     background-color: rgba(68, 94, 180, 0.8);
     color: white;
     font-size: 15px;
     padding: 10px 20px; 
     border: none; 
-    border-radius:15px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s; 
 }
 
-/* 마우스를 올렸을 때 효과 */
 .timetable-container button:hover {
     background-color: rgba(68, 94, 180, 1);
     transform: scale(1.05); 
 }
 
-/* 클릭했을 때 효과 */
 .timetable-container button:active {
     background-color: rgba(68, 94, 180, 0.6); 
     transform: scale(0.98); 
+}
+
+/* 선택된 시간표 컨테이너 */
+.timetable-check-container {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 100vh; /* 전체 높이 */
+    position: relative; /* X 버튼 배치용 */
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* 선택된 시간표 내용 */
+.timetable-check-content {
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+/* 선택된 시간표 제목 */
+.timetable-check-content h2 {
+    margin-bottom: 20px;
+    font-size: 23px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* X 버튼 스타일 */
+.timetable-check-close-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ff5f5f;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 175px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.timetable-check-close-button:hover {
+    background-color: #ff4c4c;
+    transform: scale(1.1);
+}
+
+.timetable-check-close-button:active {
+    background-color: #ff2c2c;
+    transform: scale(0.95);
+}
+
+/* PDF로 저장하기 버튼 스타일 */
+.timetable-check-pdf-button {
+    background-color: rgba(68, 94, 180, 0.8);
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.timetable-check-pdf-button:hover {
+    background-color: rgba(68, 94, 180, 1);
+    transform: scale(1.05);
+}
+
+.timetable-check-pdf-button:active {
+    background-color: rgba(68, 94, 180, 0.6);
+    transform: scale(0.98);
 }

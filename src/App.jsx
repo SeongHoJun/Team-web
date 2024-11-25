@@ -4,6 +4,7 @@ import FAQWEB from './FAQ/FAQWEB';
 import MyPage from './MyPage/mypage';
 import Loading from './Loading/Loading';
 import TimetableDataSet from './Timetable/TimetableDataSet';
+import TimetableCheck from './Timetable/TimetableCheck'; // TimetableCheck 추가
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
           <Route path="/faq" element={<FAQWEB />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/loading" element={<Loading />} />
-          <Route path="/timetable" element={<TimetableDataSet />} /> {/* TimetableDataSet로 변경 */}
+          <Route path="/timetable" element={<TimetableDataSet />} />
+          <Route path="/timetablecheck" element={<TimetableCheck />} /> {/* TimetableCheck 라우트 추가 */}
           <Route path="/" element={<FAQWEB />} />
         </Routes>
       </div>
