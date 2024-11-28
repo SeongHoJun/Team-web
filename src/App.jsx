@@ -6,6 +6,7 @@ import Loading from './Loading/Loading';
 import TimetableDataSet from './Timetable/TimetableDataSet';
 import TimetableCheck from './Timetable/timetableCheck'; // timetableCheck 컴포넌트 추가
 
+
 function App() {
   return (
     <Router>
